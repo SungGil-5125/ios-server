@@ -23,7 +23,6 @@ public class UserController {
 
     @PostMapping("/register")
     public CommonResultResponse register(@RequestBody UserSignUpDto userSignUpDto) {
-        log.info("sdfsf");
         userService.register(userSignUpDto);
         return responseService.getSuccessResult();
     }

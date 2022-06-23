@@ -34,10 +34,10 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	compileOnly 'org.projectlombok:lombok:1.18.20'
 	annotationProcessor 'org.projectlombok:lombok:1.18.20'
-
-	//spring security
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.security:spring-security-test'
+//
+//	//spring security
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

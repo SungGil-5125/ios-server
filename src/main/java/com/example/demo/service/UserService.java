@@ -6,7 +6,7 @@ import com.example.demo.dto.UserSignUpDto;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +18,7 @@ import java.util.Optional;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public User register(UserSignUpDto userSignUpDto) {
@@ -28,7 +28,7 @@ public class UserService {
             throw new IllegalStateException("이미 존재하는 이메일입니다.");
         }
 
-        userSignUpDto.setPassword(passwordEncoder.encode(userSignUpDto.getPassword()));
+//        userSignUpDto.setPassword(passwordEncoder.encode(userSignUpDto.getPassword()));
 
         User user = userSignUpDto.toEntity();
 
@@ -41,7 +41,7 @@ public class UserService {
         User user = userRepository.findByEmail(userLoginDto.getEmail())
                 .orElseThrow(() -> new IllegalStateException("존재하지 않는 user입니다."));
 
-        if(!passwordEncoder.matches(user.getPassword(), userLoginDto.getPassword())) {
+        if(userLoginDto.getPassword() == user.getPassword()) {
             throw new IllegalStateException("비밀번호가 틀렸습니다.");
         }
     }
